@@ -2,25 +2,19 @@ import { useState } from "react";
 import styled from "styled-components";
 import next from "./assets/img/seta_play.png";
 import reveal from "./assets/img/seta_virar.png";
-import certo from "./assets/img/icone_certo.png";
-import erro from "./assets/img/icone_erro.png";
-import quase from "./assets/img/icone_quase.png";
 
 export default function Card(props) {
   const { question, answer, index, setAnswerNumber, answerNumber } = props;
   const [cardState, setCardState] = useState(0);
-  const images = [
-    { icon: erro, textcolor: "#FF3030" },
-    { icon: quase, textcolor: "#FF922E" },
-    { icon: certo, textcolor: "#2FBE34" },
-  ];
+  const images = props.images;
 
   switch (cardState) {
     case 0:
       return (
-        <Flashcard>
-          <CardNaoRespondido>Pergunta {index + 1}</CardNaoRespondido>
+        <Flashcard data-test="flashcard">
+          <CardNaoRespondido data-test="flashcard-text">Pergunta {index + 1}</CardNaoRespondido>
           <img
+            data-test="play-btn"
             src={next}
             onClick={() => {
               setCardState(1);
@@ -30,9 +24,10 @@ export default function Card(props) {
       );
     case 1:
       return (
-        <OpenedQuestion>
-          <p>{question}</p>
+        <OpenedQuestion data-test="flashcard">
+          <p data-test="flashcard-text">{question}</p>
           <img
+            data-test="turn-btn"
             src={reveal}
             onClick={() => {
               setCardState(2);
@@ -42,10 +37,11 @@ export default function Card(props) {
       );
     case 2:
       return (
-        <OpenedQuestion>
-          <p>{answer}</p>
+        <OpenedQuestion data-test="flashcard">
+          <p data-test="flashcard-text">{answer}</p>
           <div>
             <Botao
+              data-test="no-btn"
               background={images[0].textcolor}
               borderColor={images[0].textcolor}
               onClick={() => {
@@ -56,6 +52,7 @@ export default function Card(props) {
               <p>Não lembrei</p>
             </Botao>
             <Botao
+              data-test="partial-btn"
               background={images[1].textcolor}
               borderColor={images[1].textcolor}
               onClick={() => {
@@ -66,6 +63,7 @@ export default function Card(props) {
               <p>Quase Lembrei</p>
             </Botao>
             <Botao
+              data-test="zap-btn"
               background={images[2].textcolor}
               borderColor={images[2].textcolor}
               onClick={() => {
@@ -80,11 +78,17 @@ export default function Card(props) {
       );
     case 3:
       return (
-        <Flashcard>
-          <CardRespondido cardColor={images[answerNumber[index]].textcolor}>
+        <Flashcard data-test="flashcard">
+          <CardRespondido
+            data-test="flashcard-text"
+            cardColor={images[answerNumber[index]].textcolor}
+          >
             Pergunta {index + 1}
           </CardRespondido>
-          <img src={images[answerNumber[index]].icon} />
+          <img
+            data-test={images[answerNumber[index]].datatest}
+            src={images[answerNumber[index]].icon}
+          />
         </Flashcard>
       );
 

@@ -1,12 +1,23 @@
+import { useState } from "react";
 import styled from "styled-components";
+import AnswerIcon from "./AnswerIcon";
 
 export default function Footer(props) {
   const footerPhrase = `${props.answerNumber.length}/${props.cards.length} CONCLUÍDOS`;
-  
+  const images = props.images;
+  const gzPhrase = props.gzPhrase;
+  const gzTitle = props.gzTitle;
+  const displayGz = props.displayGz;
   return (
     <FooterContainer>
-      <p>{footerPhrase}</p>
-      {/* <div></div> */}
+      <Congrats show={displayGz}>{gzTitle}</Congrats>
+      <TextCongrats show={displayGz}>{gzPhrase}</TextCongrats>
+      <p >{footerPhrase}</p>
+      <ContainerIcons>
+        {props.answerNumber.map((answer) => (
+          <AnswerIcon answer={answer} images={images} />
+        ))}
+      </ContainerIcons>
     </FooterContainer>
   );
 }
@@ -26,10 +37,20 @@ const FooterContainer = styled.div`
   font-size: 18px;
   color: #333333;
   padding: 10px;
-  div {
-    display: flex;
-    width: 80%;
-    justify-content: space-between;
-    margin: 20px;
-  }
+`;
+
+const ContainerIcons = styled.div`
+  display: flex;
+  width: 80%;
+  justify-content: center;
+  margin: 20px;
+`;
+
+const Congrats = styled.p`
+  display: ${(props) => props.show};
+`;
+
+const TextCongrats = styled.p`
+  display: ${(props) => props.show};
+  justify-self: center;
 `;
