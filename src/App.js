@@ -38,7 +38,7 @@ export default function App() {
   const [gzPhrase, setGzPhrase] = useState("Você não esqueceu de nenhum flashcard!");
   const [displayGz, setDisplayGz] = useState("none");
   const congrats = () => {
-    if (answerNumber.length === 8) {
+    if (answerNumber.length === cards.length) {
       setDisplayGz("auto");
       if (answerNumber.find(item => item.answer === 0)) {
         setGzTitle("😥 Putz...");
