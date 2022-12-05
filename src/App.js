@@ -33,7 +33,7 @@ export default function App() {
       <Container>
         <Logo />
         <Content cards={cards} setAnswerNumber={setAnswerNumber} answerNumber={answerNumber} />
-        <Footer answerNumber={answerNumber} />
+        <Footer cards={cards} answerNumber={answerNumber} />
       </Container>
     </div>
   );

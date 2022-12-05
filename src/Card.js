@@ -105,6 +105,7 @@ const Flashcard = styled.div`
   align-items: center;
   justify-content: space-between;
   pointer-events: none;
+  user-select: none;
   img {
     pointer-events: all;
   }
@@ -138,6 +139,7 @@ const OpenedQuestion = styled.div`
   flex-direction: column;
   justify-content: space-between;
   pointer-events: none;
+  user-select: none;
   img {
     position: absolute;
     bottom: 10px;

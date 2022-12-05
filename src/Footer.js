@@ -1,7 +1,14 @@
 import styled from "styled-components";
 
-export default function Footer() {
-  return <FooterContainer></FooterContainer>;
+export default function Footer(props) {
+  const footerPhrase = `${props.answerNumber.length}/${props.cards.length} CONCLUÍDOS`;
+  
+  return (
+    <FooterContainer>
+      <p>{footerPhrase}</p>
+      {/* <div></div> */}
+    </FooterContainer>
+  );
 }
 
 const FooterContainer = styled.div`
@@ -19,7 +26,7 @@ const FooterContainer = styled.div`
   font-size: 18px;
   color: #333333;
   padding: 10px;
-  > .container-botoes {
+  div {
     display: flex;
     width: 80%;
     justify-content: space-between;
