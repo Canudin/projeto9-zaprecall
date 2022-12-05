@@ -7,5 +7,5 @@ export default function AnswerIcon(props) {
 }
 
 const IconImg = styled.img`
-  padding: 0 0.5vw;
+  padding: 0 2px;
 `;
