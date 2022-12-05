@@ -9,10 +9,12 @@ export default function Footer(props) {
   const gzTitle = props.gzTitle;
   const displayGz = props.displayGz;
   return (
-    <FooterContainer>
-      <Congrats show={displayGz}>{gzTitle}</Congrats>
-      <TextCongrats show={displayGz}>{gzPhrase}</TextCongrats>
-      <p >{footerPhrase}</p>
+    <FooterContainer data-test="footer">
+      <div data-test="finish-text">
+        <Congrats show={displayGz}>{gzTitle}</Congrats>
+        <TextCongrats show={displayGz}>{gzPhrase}</TextCongrats>
+      </div>
+      <p>{footerPhrase}</p>
       <ContainerIcons>
         {props.answerNumber.map((answer) => (
           <AnswerIcon answer={answer} images={images} />
