@@ -6,6 +6,7 @@ import { useState } from "react";
 import certo from "./assets/img/icone_certo.png";
 import erro from "./assets/img/icone_erro.png";
 import quase from "./assets/img/icone_quase.png";
+
 export default function App() {
   const cards = [
     { question: "O que é JSX?", answer: "Uma extensão da linguagem JavaScript" },
