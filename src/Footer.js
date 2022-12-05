@@ -49,6 +49,9 @@ const ContainerIcons = styled.div`
 `;
 
 const Congrats = styled.p`
+  width: fit-content;
+  margin: 0 auto;
+  font-weight: 700;
   display: ${(props) => props.show};
 `;
 
