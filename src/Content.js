@@ -5,7 +5,13 @@ export default function Content(props) {
   return (
     <>
       {cards.map((card, index) => (
-        <Card question={card.question} answer={card.answer} index={index+1} />
+        <Card
+          question={card.question}
+          answer={card.answer}
+          index={index}
+          setAnswerNumber={props.setAnswerNumber}
+          answerNumber={props.answerNumber}
+        />
       ))}
     </>
   );

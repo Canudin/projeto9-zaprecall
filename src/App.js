@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Footer from "./Footer";
 import Logo from "./Logo";
 import Content from "./Content";
+import { useState } from "react";
 
 export default function App() {
   const cards = [
@@ -24,12 +25,15 @@ export default function App() {
         "Dizer para o React quais informações quando atualizadas devem renderizar a tela novamente",
     },
   ];
+
+  const [answerNumber, setAnswerNumber] = useState([]);
+
   return (
     <div className="app">
       <Container>
-        <Logo/>
-        <Content cards={cards}/>
-        <Footer/>
+        <Logo />
+        <Content cards={cards} setAnswerNumber={setAnswerNumber} answerNumber={answerNumber} />
+        <Footer answerNumber={answerNumber} />
       </Container>
     </div>
   );
