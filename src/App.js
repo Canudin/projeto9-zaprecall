@@ -40,7 +40,7 @@ export default function App() {
   const congrats = () => {
     if (answerNumber.length === 8) {
       setDisplayGz("auto");
-      if (answerNumber.includes(0)) {
+      if (answerNumber.find(item => item.answer === 0)) {
         setGzTitle("😥 Putz...");
         setGzPhrase("Ainda faltam alguns... Mas não desanime!");
         return;

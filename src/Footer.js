@@ -16,8 +16,8 @@ export default function Footer(props) {
       </div>
       <p>{footerPhrase}</p>
       <ContainerIcons>
-        {props.answerNumber.map((answer) => (
-          <AnswerIcon answer={answer} images={images} />
+        {props.answerNumber.map((item) => (
+          <AnswerIcon answer={item.answer} images={images} />
         ))}
       </ContainerIcons>
     </FooterContainer>

@@ -7,7 +7,6 @@ export default function Card(props) {
   const { question, answer, index, setAnswerNumber, answerNumber } = props;
   const [cardState, setCardState] = useState(0);
   const images = props.images;
-
   switch (cardState) {
     case 0:
       return (
@@ -46,7 +45,7 @@ export default function Card(props) {
               borderColor={images[0].textcolor}
               onClick={() => {
                 setCardState(3);
-                return setAnswerNumber([...answerNumber, 0]);
+                return setAnswerNumber([...answerNumber, { answer: 0, key: index }]);
               }}
             >
               <p>Não lembrei</p>
@@ -57,7 +56,7 @@ export default function Card(props) {
               borderColor={images[1].textcolor}
               onClick={() => {
                 setCardState(3);
-                return setAnswerNumber([...answerNumber, 1]);
+                return setAnswerNumber([...answerNumber, { answer: 1, key: index }]);
               }}
             >
               <p>Quase Lembrei</p>
@@ -68,7 +67,7 @@ export default function Card(props) {
               borderColor={images[2].textcolor}
               onClick={() => {
                 setCardState(3);
-                return setAnswerNumber([...answerNumber, 2]);
+                return setAnswerNumber([...answerNumber, { answer: 2, key: index }]);
               }}
             >
               <p>Zap!</p>
@@ -81,13 +80,13 @@ export default function Card(props) {
         <Flashcard data-test="flashcard">
           <CardRespondido
             data-test="flashcard-text"
-            cardColor={images[answerNumber[index]].textcolor}
+            cardColor={images[answerNumber.find(item => item.key === index).answer].textcolor}
           >
             Pergunta {index + 1}
           </CardRespondido>
           <img
-            data-test={images[answerNumber[index]].datatest}
-            src={images[answerNumber[index]].icon}
+            data-test={images[answerNumber.find(item => item.key === index).answer].datatest}
+            src={images[answerNumber.find(item => item.key === index).answer].icon}
           />
         </Flashcard>
       );
