@@ -19,7 +19,7 @@ export default function Card(props) {
     case 0:
       return (
         <Flashcard>
-          <p>Pergunta {index + 1}</p>
+          <CardNaoRespondido>Pergunta {index + 1}</CardNaoRespondido>
           <img
             src={next}
             onClick={() => {
@@ -81,7 +81,9 @@ export default function Card(props) {
     case 3:
       return (
         <Flashcard>
-          <p>Pergunta {index + 1}</p>
+          <CardRespondido cardColor={images[answerNumber[index]].textcolor}>
+            Pergunta {index + 1}
+          </CardRespondido>
           <img src={images[answerNumber[index]].icon} />
         </Flashcard>
       );
@@ -103,14 +105,6 @@ const Flashcard = styled.div`
   align-items: center;
   justify-content: space-between;
   pointer-events: none;
-  p {
-    font-family: "Recursive";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 19px;
-    color: #333333;
-  }
   img {
     pointer-events: all;
   }
@@ -181,4 +175,23 @@ const Botao = styled.button`
   border: 1px solid ${(props) => props.borderColor};
   padding: 5px;
   pointer-events: all;
+`;
+
+const CardRespondido = styled.p`
+  font-family: "Recursive";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  text-decoration: line-through;
+  color: ${(props) => props.cardColor};
+`;
+
+const CardNaoRespondido = styled.p`
+  font-family: "Recursive";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: #333333;
 `;
